@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  node:
+    image: 'node:14-alpine'
+    working_dir: '/app/'
+    # to avoid new files permissions issues
+    # container 'node' user's gid/uid is 1000
+    # https://vsupalov.com/docker-shared-permissions/
+    user: 'node'
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./:/app/
